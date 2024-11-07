@@ -4,3 +4,4 @@ langchain-groq
 pysqlite3-binary
 chromadb
 pandas
+beautifulsoup4
