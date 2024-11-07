@@ -1,6 +1,6 @@
 langchain
 langchain-community
 langchain-groq
+pysqlite3-binary
 chromadb
 pandas
-pysqlite3-binary
