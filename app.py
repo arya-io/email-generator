@@ -9,9 +9,9 @@ def create_streamlit_app(llm, portfolio, clean_text):
     st.title("📧 Cold Mail Generator")
 
     # User Inputs for name, designation, and company
-    user_name = st.text_input("Enter your name:", value="Mohan")
-    user_designation = st.text_input("Enter your designation:", value="BDE")
-    user_company = st.text_input("Enter your company name:", value="AtliQ")
+    user_name = st.text_input("Enter your name:", placeholder="Mohan")
+    user_designation = st.text_input("Enter your designation:", placeholder="BDE")
+    user_company = st.text_input("Enter your company name:", placeholder="AtliQ")
     
     url_input = st.text_input("Enter a URL:", value="https://jobs.nike.com/job/R-43835?from=job%20search%20funnel")
     submit_button = st.button("Submit")
