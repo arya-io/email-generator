@@ -1,6 +1,5 @@
-langchain==0.2.14
-langchain-community==0.2.12
-langchain-groq===0.1.9
-chromadb==0.5.0
-streamlit==1.35.0
-pandas==2.0.2
+langchain
+langchain-community
+langchain-groq
+chromadb
+pandas
