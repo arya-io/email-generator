@@ -1,33 +1,30 @@
-# Import necessary libraries
-import streamlit as st  # Streamlit is used to build the web interface for the app.
+import streamlit as st
 from langchain_community.document_loaders import WebBaseLoader  # Used to scrape data from a URL (job listing page).
-from chains import Chain  # Importing the Chain class that interacts with the language model for generating emails and extracting jobs.
+from chains import Chain  # Importing the Chain class that interacts with the language model for extracting jobs and generating emails.
 from portfolio import Portfolio  # Importing the Portfolio class to manage and query the user's portfolio.
 from utils import clean_text  # Importing the clean_text function to clean the scraped data from the web.
 
 # Function to create and configure the Streamlit app
 def create_streamlit_app(llm, portfolio, clean_text):
-    # Set the title of the app
     st.title("📧 Cold Mail Generator")
 
-    # Display a description of what the app does
+    # A description of what the app does
     st.markdown("""
-    This app is a **Cold Email Generator** designed to help business professionals quickly generate personalized cold emails for job opportunities 
-    listed on websites. It allows users to input a URL for a job listing, then extracts relevant job details (such as role, skills, and experience) 
-    from the page using AI. The user can also input their name, designation, and company details, which are then used to automatically craft a professional 
-    cold email tailored to the job description. The app also integrates the user’s company portfolio links to showcase relevant work.
+    This app is a **Cold Email Generator** that helps business professionals create personalized cold emails for job opportunities. 
+    Users can input a job listing URL, and the AI extracts key details (role, skills, experience). 
+    By providing their name, designation, and company, users receive a tailored cold email, complete with portfolio links to highlight relevant work.
     """)
 
-    # Create input fields for user to provide personal details like name, designation, and company
-    user_name = st.text_input("Enter your name:", placeholder="Your Name")  # Input field for the user's name
-    user_designation = st.text_input("Enter your designation:", placeholder="Your Designation in the Company")  # Input for job designation
-    user_company = st.text_input("Enter your company name:", placeholder="Your Company Name")  # Input for the company name
+    # Creating input fields for user to provide personal details like name, designation, and company
+    user_name = st.text_input("Enter your name:", placeholder="Your Name")
+    user_designation = st.text_input("Enter your designation:", placeholder="Your Designation in the Company")
+    user_company = st.text_input("Enter your company name:", placeholder="Your Company Name")
     
-    # Create an input field for the user to provide a URL (job listing URL)
-    url_input = st.text_input("Enter a URL:", value="https://jobs.nike.com/job/R-43835?from=job%20search%20funnel")  # Default URL for the job listing
-    submit_button = st.button("Submit")  # Submit button to initiate processing
+    # Creating an input field for the user to provide a URL (job listing URL)
+    url_input = st.text_input("Enter a URL:", value="https://jobs.nike.com/job/R-43835?from=job%20search%20funnel")
+    submit_button = st.button("Submit")
 
-    # When the submit button is clicked, execute the following logic
+    # When the submit button is clicked, the following logic will get executed
     if submit_button:
         try:
             # Step 1: Scrape job listing data from the URL using WebBaseLoader
@@ -59,11 +56,10 @@ def create_streamlit_app(llm, portfolio, clean_text):
 
 # Main function to initialize and run the app
 if __name__ == "__main__":
-    # Initialize instances of Chain and Portfolio classes
-    chain = Chain()  # Create an instance of the Chain class (used for job extraction and email generation)
-    portfolio = Portfolio()  # Create an instance of the Portfolio class (used to manage and query the user's portfolio)
+   
+    chain = Chain()  # Create an instance of the Chain class
+    portfolio = Portfolio()  # Create an instance of the Portfolio class
     
-    # Configure the layout and appearance of the Streamlit app
     st.set_page_config(layout="wide", page_title="Cold Email Generator", page_icon="📧")  # Set the page layout and title
     
     # Call the function to create and run the Streamlit app
