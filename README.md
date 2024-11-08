@@ -21,8 +21,8 @@ This project is a **Cold Email Generator** built using Groq Cloud, ChromaDB, Lan
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/cold-email-generator.git
-   cd cold-email-generator
+   git clone https://github.com/arya-io/email-generator.git
+   cd email-generator
    
 2. Install required dependencies:
    ```bash
