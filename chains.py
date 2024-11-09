@@ -1,6 +1,4 @@
-# Import necessary libraries
-import os  # Standard library for interacting with the operating system, though not actively used here
-import streamlit as st  # Streamlit library, for web app integration (not directly used in this file)
+import streamlit as st
 from langchain_groq import ChatGroq  # langchain_groq provides an interface to interact with Groq, the LLM provider
 from langchain_core.prompts import PromptTemplate  # Used to create prompts to interact with the LLM
 from langchain_core.output_parsers import JsonOutputParser  # Parses output from the LLM in JSON format
