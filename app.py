@@ -27,28 +27,28 @@ def create_streamlit_app(llm, portfolio, clean_text):
     # When the submit button is clicked, the following logic will get executed
     if submit_button:
         try:
-            # Step 1: Scrape job listing data from the URL using WebBaseLoader
-            loader = WebBaseLoader([url_input])  # Initialize WebBaseLoader with the URL provided by the user
-            data = clean_text(loader.load().pop().page_content)  # Scrape and clean the page content using clean_text function
+            # Step 1: Scraping job listing data from the URL using WebBaseLoader
+            loader = WebBaseLoader([url_input])  # Initializing WebBaseLoader with the URL provided by the user
+            data = clean_text(loader.load().pop().page_content)  # Scraping and cleaning the page content using clean_text function
 
-            # Step 2: Load the portfolio data
-            portfolio.load_portfolio()  # Load portfolio data (if not already loaded)
+            # Step 2: Loading the portfolio data
+            portfolio.load_portfolio()  # Loading portfolio data (if not already loaded)
 
-            # Step 3: Extract job details using the language model
-            jobs = llm.extract_jobs(data)  # Extract job data from the cleaned content using the language model (LLM)
+            # Step 3: Extracting job details using the language model
+            jobs = llm.extract_jobs(data)  # Extracting job data from the cleaned content using the language model (LLM)
 
-            # Step 4: Process each job posting
+            # Step 4: Processing each job posting
             for job in jobs:
-                skills = job.get('skills', [])  # Extract the skills required for the job (default to empty list if not found)
+                skills = job.get('skills', [])  # Extracting the skills required for the job (default to empty list if not found)
                 
-                # Step 5: Query portfolio for relevant links based on the job's required skills
-                links = portfolio.query_links(skills)  # Query portfolio using the extracted skills to find relevant links
+                # Step 5: Querying portfolio for relevant links based on the job's required skills
+                links = portfolio.query_links(skills)  # Querying portfolio using the extracted skills to find relevant links
                 
-                # Step 6: Generate a personalized cold email using the extracted job data, portfolio links, and user inputs
-                email = llm.write_mail(job, links, user_name, user_designation, user_company)  # Call the LLM to generate the email
+                # Step 6: Generating a personalized cold email using the extracted job data, portfolio links, and user inputs
+                email = llm.write_mail(job, links, user_name, user_designation, user_company)  # Calling the LLM to generate the email
                 
-                # Step 7: Display the generated email in the app (in Markdown format)
-                st.code(email, language='markdown')  # Display the email in a formatted block of code
+                # Step 7: Displaying the generated email in the app (in Markdown format)
+                st.code(email, language='markdown')  # Displaying the email in a formatted block of code
 
         except Exception as e:
             # Step 8: If any error occurs during the process, display an error message
